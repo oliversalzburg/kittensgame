@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"noEmit": true,
+		"types": [
+			"./types", "jquery"
+		]
+	},
+	"include": [
+		"./js/**/*.js",
+		"./*.js"
+	]
+}
