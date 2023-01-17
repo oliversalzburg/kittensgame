@@ -1,3 +1,5 @@
+import { GamePage } from "./game";
+
 export interface Control {}
 
 export interface TabManager extends Control {
@@ -5,7 +7,7 @@ export interface TabManager extends Control {
   meta: Array<unknown> | null;
   panelData: Record<string, unknown> | null;
 
-  constructor(this: this, _game: unknown): unknown;
+  constructor(this: this, _game: GamePage): unknown;
 
   registerPanel(this: this, id: string, panel: unknown): void;
   registerMeta(this: this, interface: string, meta: unknown, provider: unknown): void;

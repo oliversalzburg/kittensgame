@@ -1,4 +1,5 @@
 import { BuildingBtnController, Panel, tab, TabManager } from "../core";
+import { GamePage } from "../game";
 
 export type Challenges =
   | "1000Years"
@@ -60,24 +61,24 @@ export interface Challenge {
     arrivalSlowdown: number;
     cryochamberSupport: number;
   }>;
-  calculateEffects?(self: Challenge, game: unknown): void;
-  checkCompletionCondition?(game: unknown): boolean;
-  checkCompletionConditionOnReset?(game: unknown): boolean;
+  calculateEffects?(self: Challenge, game: GamePage): void;
+  checkCompletionCondition?(game: GamePage): boolean;
+  checkCompletionConditionOnReset?(game: GamePage): boolean;
   reserveDelay?: boolean;
   flavor?: string;
-  findRuins?(self: Challenge, game: unknown): void;
-  actionOnCompletion?(game: unknown): void;
+  findRuins?(self: Challenge, game: GamePage): void;
+  actionOnCompletion?(game: GamePage): void;
 }
 
 export interface ChallengesManager extends TabManager {
-  game: unknown;
+  game: GamePage;
   reserves: unknown;
 
   currentChallenge: null;
   challenges: Array<Challenge>;
 
-  constructor(this: this, game: unknown): void;
-  new (game: unknown);
+  constructor(this: this, game: GamePage): void;
+  new (game: GamePage);
 
   resetState(this: this): void;
   save(this: this, saveData: unknown): void;
@@ -93,13 +94,13 @@ export interface ChallengesManager extends TabManager {
 }
 
 export interface reserveMan {
-  game: unknown;
+  game: GamePage;
   reserveResources: null;
   reserveKittens: null;
   reserveCryochambers: number;
 
-  constructor(this: this, game: unknown): void;
-  new (game: unknown);
+  constructor(this: this, game: GamePage): void;
+  new (game: GamePage);
 
   resetState(this: this): void;
   calculateReserveResources(this: this): void;
@@ -112,7 +113,7 @@ export interface reserveMan {
 }
 
 export interface ChallengeBtnController extends BuildingBtnController {
-  new (game: unknown);
+  new (game: GamePage);
 
   getMetadata(this: this, model: unknown): unknown;
   getDescription(this: this, model: unknown): unknown;
@@ -125,16 +126,16 @@ export interface ChallengeBtnController extends BuildingBtnController {
 }
 
 export interface ChallengePanel extends Panel {
-  game: null;
+  game: GamePage;
 
   constructor(this: this): void;
-  new (game: unknown);
+  new (game: GamePage);
 
   render(this: this, container: unknown): void;
 }
 
 export interface ChallengesTab extends tab {
-  new (game: unknown);
+  new (game: GamePage);
 
   render(this: this, container: unknown): void;
   update(this: this): void;

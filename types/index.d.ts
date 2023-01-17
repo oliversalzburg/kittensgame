@@ -1,4 +1,13 @@
 import {
+  EffectsManager,
+  GamePage,
+  IDataStorageAware,
+  Server,
+  Telemetry,
+  Timer,
+  UndoChange,
+} from "./game";
+import {
   ChallengeBtnController,
   ChallengePanel,
   ChallengesManager,
@@ -29,6 +38,12 @@ import { AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
   classes: {
+    game: {
+      Server: Server;
+      Telemetry: Telemetry;
+      Timer: Timer;
+      UndoChange: UndoChange;
+    };
     managers: {
       ChallengesManager: ChallengesManager;
     };
@@ -51,6 +66,7 @@ export type ComInterface = {
         TabManager: TabManager;
       };
       game: {
+        EffectsManager: EffectsManager;
         log: {
           Console: Console;
         };
@@ -65,9 +81,10 @@ export type ComInterface = {
           BuildingStackableBtn: BuildingStackableBtn;
           BuildingNotStackableBtnController: BuildingNotStackableBtnController;
           BuildingResearchBtn: BuildingResearchBtn;
-          Spacer: Spacer;
           ContentRowRenderer: ContentRowRenderer;
+          GamePage: GamePage;
           Panel: Panel;
+          Spacer: Spacer;
           tab: tab;
         };
       };
@@ -77,8 +94,9 @@ export type ComInterface = {
 
 export type Mixins = {
   mixin: {
-    IGameAware: IGameAware;
     IChildrenAware: IChildrenAware;
+    IDataStorageAware: IDataStorageAware;
+    IGameAware: IGameAware;
   };
 };
 
@@ -111,6 +129,7 @@ declare global {
   const classes: ClassesList["classes"];
   const com: ComInterface["com"];
   const dojo: Dojo;
+  const gamePage: GamePage;
   const mixin: Mixins["mixin"];
   const React: React;
 
