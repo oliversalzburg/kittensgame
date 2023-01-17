@@ -88,4 +88,10 @@ declare global {
 	const dojo: Dojo;
 	const mixin: Mixins["mixin"];
 	const React: React;
+
+	interface Window {
+		LCstorage: Storage | {
+			removeItem?: () => void
+		}
+	}
 }
