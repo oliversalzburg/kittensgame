@@ -1,34 +1,74 @@
 import { ChallengesManager } from "./challenges";
-import { Control, TabManager } from "./core";
+import { BuildingBtn, BuildingBtnController, BuildingNotStackableBtnController, BuildingResearchBtn, BuildingStackableBtn, BuildingStackableBtnController, Button, ButtonController, ButtonModern, ButtonModernController, ContentRowRenderer, Control, IChildrenAware, IGameAware, Panel, Spacer, tab, TabManager } from "./core";
+import { AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
-	managers: {
-		ChallengesManager: ChallengesManager
+	classes: {
+		managers: {
+			ChallengesManager: ChallengesManager
+		}
 	}
 }
 
 export type ComInterface = {
-	nuclearunicorn: {
-		core: {
-			Control: Control;
-			TabManager: TabManager
+	com: {
+		nuclearunicorn: {
+			core: {
+				Control: Control;
+				TabManager: TabManager
+			};
+			game: {
+				log: {
+					Console: Console;
+				}
+				ui: {
+					ButtonController: ButtonController;
+					Button: Button;
+					ButtonModernController: ButtonModernController;
+					ButtonModern: ButtonModern;
+					BuildingBtnController: BuildingBtnController;
+					BuildingBtn: BuildingBtn;
+					BuildingStackableBtnController: BuildingStackableBtnController;
+					BuildingStackableBtn: BuildingStackableBtn;
+					BuildingNotStackableBtnController: BuildingNotStackableBtnController;
+					BuildingResearchBtn: BuildingResearchBtn;
+					Spacer: Spacer;
+					ContentRowRenderer: ContentRowRenderer;
+					Panel: Panel;
+					tab: tab;
+				}
+			}
 		};
-	};
+	}
 };
 
-export type KnownClasses = {
-	"classes.managers.ChallengesManager": ChallengesManager;
-	"com.nuclearunicorn.core.Control": Control;
-	"com.nuclearunicorn.core.TabManager": TabManager;
+export type Mixins = {
+	mixin: {
+		IGameAware: IGameAware;
+		IChildrenAware: IChildrenAware;
+	}
 }
 
-export type KnownClassesNames = keyof KnownClasses;
+type Classes = ClassesList & ComInterface & Mixins;
+
+interface DojoDeclare {
+	<
+		TClassName extends string,
+		TBaseClass,
+		TClass = GetPath<Classes, TClassName>
+	>
+		(name: AutoPath<Classes, TClassName>, baseClass: TBaseClass, classPrototype: Partial<TBaseClass & TClass>): void;
+	<
+		TClassName extends string,
+		TBaseClass1,
+		TBaseClass2,
+		TClass = GetPath<Classes, TClassName>
+	>
+		(name: AutoPath<Classes, TClassName>, baseClasses: [TBaseClass1, TBaseClass2], classPrototype: Partial<TBaseClass1 & TBaseClass2 & TClass>): void;
+}
 
 export type Dojo = {
-	declare: <
-		TClassName extends KnownClassesNames,
-		TBaseClass extends KnownClasses[KnownClassesNames]>
-		(name: TClassName, baseClass: TBaseClass, classPrototype: Partial<TBaseClass & KnownClasses[TClassName]>) => void;
+	declare: DojoDeclare;
 	empty: (arg: unknown) => unknown;
 }
 
@@ -38,14 +78,14 @@ export type React = {
 
 interface TranslateFunction {
 	(literal: string): string;
-	(literal: string, translation: string): void;
-	(literal: string, translation: string | undefined): void
+	(literal: string, args: Array<number | string>): string;
 }
 
 declare global {
 	const $I: TranslateFunction;
-	const classes: ClassesList;
-	const com: ComInterface;
+	const classes: ClassesList["classes"];
+	const com: ComInterface["com"];
 	const dojo: Dojo;
+	const mixin: Mixins["mixin"];
 	const React: React;
 }
