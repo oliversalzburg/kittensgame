@@ -1,4 +1,10 @@
-import { ChallengeBtnController, ChallengesManager, reserveMan } from "./js/challenges";
+import {
+  ChallengeBtnController,
+  ChallengePanel,
+  ChallengesManager,
+  ChallengesTab,
+  reserveMan,
+} from "./js/challenges";
 import {
   BuildingBtn,
   BuildingBtnController,
@@ -27,8 +33,12 @@ export type ClassesList = {
       ChallengesManager: ChallengesManager;
     };
     reserveMan: reserveMan;
+    tab: {
+      ChallengesTab: ChallengesTab;
+    };
     ui: {
       ChallengeBtnController: ChallengeBtnController;
+      ChallengePanel: ChallengePanel;
     };
   };
 };
@@ -78,11 +88,6 @@ interface DojoDeclare {
   <TClassName extends string>(
     name: AutoPath<Classes, TClassName>,
     baseClass: unknown,
-    classPrototype: Partial<GetPath<Classes, TClassName>>
-  ): void;
-  <TClassName extends string>(
-    name: AutoPath<Classes, TClassName>,
-    baseClasses: Array<unknown>,
     classPrototype: Partial<GetPath<Classes, TClassName>>
   ): void;
 }

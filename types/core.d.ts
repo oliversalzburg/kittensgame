@@ -15,7 +15,7 @@ export interface TabManager extends Control {
   _hasLimitedDiminishingReturn(this: this, name: string): boolean;
   getMetaEffect(this: this, name: string, metadata: unknown): unknown;
   getMeta(this: this, name: string, metadata: unknown): unknown;
-  loadMetadata(this: this, meta: unknown, saveMeta: unknown, metaId: string): unknown;
+  loadMetadata(this: this, meta: unknown, saveMeta: unknown, metaId?: string): unknown;
   filterMetadata(this: this, meta: unknown, fields: Array<string>): unknown;
   resetStateStackable(this: this, bld: unknown): void;
   resetStateResearch(this: this): void;
