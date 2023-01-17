@@ -1,4 +1,4 @@
-import { ChallengesManager } from "./challenges";
+import { ChallengesManager } from "./js/challenges";
 import { BuildingBtn, BuildingBtnController, BuildingNotStackableBtnController, BuildingResearchBtn, BuildingStackableBtn, BuildingStackableBtnController, Button, ButtonController, ButtonModern, ButtonModernController, ContentRowRenderer, Control, IChildrenAware, IGameAware, Panel, Spacer, tab, TabManager } from "./core";
 import { AutoPath, GetPath } from "./_tools";
 
@@ -57,14 +57,14 @@ interface DojoDeclare {
 		TBaseClass,
 		TClass = GetPath<Classes, TClassName>
 	>
-		(name: AutoPath<Classes, TClassName>, baseClass: TBaseClass, classPrototype: Partial<TBaseClass & TClass>): void;
+		(name: AutoPath<Classes, TClassName>, baseClass: TBaseClass, classPrototype: Partial<TBaseClass | TClass>): void;
 	<
 		TClassName extends string,
 		TBaseClass1,
 		TBaseClass2,
 		TClass = GetPath<Classes, TClassName>
 	>
-		(name: AutoPath<Classes, TClassName>, baseClasses: [TBaseClass1, TBaseClass2], classPrototype: Partial<TBaseClass1 & TBaseClass2 & TClass>): void;
+		(name: AutoPath<Classes, TClassName>, baseClasses: [TBaseClass1, TBaseClass2], classPrototype: Partial<TBaseClass1 | TBaseClass2 | TClass>): void;
 }
 
 export type Dojo = {

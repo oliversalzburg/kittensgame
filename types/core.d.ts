@@ -1,26 +1,24 @@
-export type Control = {
+export type Control = Record<string, unknown>;
+
+export type TabManager = Control & {
 	effectsCachedExisting: Record<string, unknown> | null;
 	meta: Array<unknown> | null;
 	panelData: Record<string, unknown> | null;
 
-	constructor: () => void;
+	constructor: (this: TabManager) => void;
 
-	registerPanel: (id: string, panel: unknown) => void;
-	registerMeta: (type: string, meta: unknown, provider: unknown) => void;
-	setEffectsCachedExisting: () => void;
-	updateEffectCached: () => void;
-	updateMetaEffectCached: (metadata: unknown) => void;
-	_hasLimitedDiminishingReturn: (name: string) => boolean;
-	getMetaEffect: (name: string, metadata: unknown) => unknown;
-	getMeta: (name: string, metadata: unknown) => unknown;
-	loadMetadata: (meta: unknown, saveMeta: unknown, metaId: string) => unknown;
-	filterMetadata: (meta: unknown, fields: Array<string>) => unknown;
-	resetStateStackable: (bld: unknown) => void;
-	resetStateResearch: () => void;
-};
-
-export type TabManager = Control & {
-
+	registerPanel: (this: TabManager, id: string, panel: unknown) => void;
+	registerMeta: (this: TabManager, type: string, meta: unknown, provider: unknown) => void;
+	setEffectsCachedExisting: (this: TabManager) => void;
+	updateEffectCached: (this: TabManager) => void;
+	updateMetaEffectCached: (this: TabManager, metadata: unknown) => void;
+	_hasLimitedDiminishingReturn: (this: TabManager, name: string) => boolean;
+	getMetaEffect: (this: TabManager, name: string, metadata: unknown) => unknown;
+	getMeta: (this: TabManager, name: string, metadata: unknown) => unknown;
+	loadMetadata: (this: TabManager, meta: unknown, saveMeta: unknown, metaId: string) => unknown;
+	filterMetadata: (this: TabManager, meta: unknown, fields: Array<string>) => unknown;
+	resetStateStackable: (this: TabManager, bld: unknown) => void;
+	resetStateResearch: (this: TabManager) => void;
 }
 
 export type Console = {}

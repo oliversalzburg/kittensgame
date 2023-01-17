@@ -4,7 +4,9 @@
 		"checkJs": true,
 		"noEmit": true,
 		"types": [
-			"./types", "jquery"
+			"./types",
+			"browser",
+			"jquery"
 		]
 	},
 	"include": [
