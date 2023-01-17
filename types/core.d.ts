@@ -1,44 +1,44 @@
-export type Control = Record<string, unknown>;
+export interface Control { }
 
-export type TabManager = Control & {
+export interface TabManager extends Control {
 	effectsCachedExisting: Record<string, unknown> | null;
 	meta: Array<unknown> | null;
 	panelData: Record<string, unknown> | null;
 
-	constructor: (this: TabManager) => void;
+	constructor(this: this, _game: unknown): unknown;
 
-	registerPanel: (this: TabManager, id: string, panel: unknown) => void;
-	registerMeta: (this: TabManager, type: string, meta: unknown, provider: unknown) => void;
-	setEffectsCachedExisting: (this: TabManager) => void;
-	updateEffectCached: (this: TabManager) => void;
-	updateMetaEffectCached: (this: TabManager, metadata: unknown) => void;
-	_hasLimitedDiminishingReturn: (this: TabManager, name: string) => boolean;
-	getMetaEffect: (this: TabManager, name: string, metadata: unknown) => unknown;
-	getMeta: (this: TabManager, name: string, metadata: unknown) => unknown;
-	loadMetadata: (this: TabManager, meta: unknown, saveMeta: unknown, metaId: string) => unknown;
-	filterMetadata: (this: TabManager, meta: unknown, fields: Array<string>) => unknown;
-	resetStateStackable: (this: TabManager, bld: unknown) => void;
-	resetStateResearch: (this: TabManager) => void;
+	registerPanel(this: this, id: string, panel: unknown): void;
+	registerMeta(this: this, interface: string, meta: unknown, provider: unknown): void;
+	setEffectsCachedExisting(this: this): void;
+	updateEffectCached(this: this): void;
+	updateMetaEffectCached(this: this, metadata: unknown): void;
+	_hasLimitedDiminishingReturn(this: this, name: string): boolean;
+	getMetaEffect(this: this, name: string, metadata: unknown): unknown;
+	getMeta(this: this, name: string, metadata: unknown): unknown;
+	loadMetadata(this: this, meta: unknown, saveMeta: unknown, metaId: string): unknown;
+	filterMetadata(this: this, meta: unknown, fields: Array<string>): unknown;
+	resetStateStackable(this: this, bld: unknown): void;
+	resetStateResearch(this: this): void;
 }
 
-export type Console = {}
+export interface Console { }
 
-export type ButtonController = {}
-export type Button = Control & {}
-export type ButtonModernController = ButtonController & {}
-export type ButtonModern = Button & {}
-export type BuildingBtnController = ButtonModernController & {}
-export type BuildingBtn = ButtonModern & {}
-export type BuildingStackableBtnController = BuildingBtnController & {}
-export type BuildingStackableBtn = BuildingBtn & {};
-export type BuildingNotStackableBtnController = BuildingBtnController & {};
-export type BuildingResearchBtn = BuildingBtn & {};
+export interface ButtonController { }
+export interface Button extends Control { }
+export interface ButtonModernController extends ButtonController { }
+export interface ButtonModern extends Button { }
+export interface BuildingBtnController extends ButtonModernController { }
+export interface BuildingBtn extends ButtonModern { }
+export interface BuildingStackableBtnController extends BuildingBtnController { }
+export interface BuildingStackableBtn extends BuildingBtn { }
+export interface BuildingNotStackableBtnController extends BuildingBtnController { }
+export interface BuildingResearchBtn extends BuildingBtn { }
 
-export type Spacer = {};
-export type ContentRowRenderer = {};
+export interface Spacer { }
+export interface ContentRowRenderer { }
 
-export type IGameAware = {};
-export type IChildrenAware = {};
+export interface IGameAware { }
+export interface IChildrenAware { }
 
-export type Panel = ContentRowRenderer & IChildrenAware & {};
-export type tab = ContentRowRenderer & IChildrenAware & {};
+export interface Panel extends ContentRowRenderer, IChildrenAware { }
+export interface tab extends ContentRowRenderer, IChildrenAware { }

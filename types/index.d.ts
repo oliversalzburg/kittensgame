@@ -52,19 +52,17 @@ export type Mixins = {
 type Classes = ClassesList & ComInterface & Mixins;
 
 interface DojoDeclare {
-	<
-		TClassName extends string,
-		TBaseClass,
-		TClass = GetPath<Classes, TClassName>
-	>
-		(name: AutoPath<Classes, TClassName>, baseClass: TBaseClass, classPrototype: Partial<TBaseClass | TClass>): void;
-	<
-		TClassName extends string,
-		TBaseClass1,
-		TBaseClass2,
-		TClass = GetPath<Classes, TClassName>
-	>
-		(name: AutoPath<Classes, TClassName>, baseClasses: [TBaseClass1, TBaseClass2], classPrototype: Partial<TBaseClass1 | TBaseClass2 | TClass>): void;
+	<TClassName extends string>(
+		name: AutoPath<Classes, TClassName>,
+		baseClass: unknown,
+		classPrototype: Partial<GetPath<Classes, TClassName>>
+	): void;
+	<TClassName extends string>(
+		name: AutoPath<Classes, TClassName>,
+		baseClasses: Array<unknown>,
+		classPrototype: Partial<GetPath<Classes, TClassName>>
+	): void;
+
 }
 
 export type Dojo = {

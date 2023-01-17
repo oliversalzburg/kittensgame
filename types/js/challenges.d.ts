@@ -1,22 +1,23 @@
-export type ChallengesManager = {
+import { TabManager } from "../core";
+
+export interface ChallengesManager extends TabManager {
 	game: unknown;
 	reserves: unknown;
 
 	currentChallenge: null;
 	challenges: Array<unknown>;
 
-	constructor: (game: unknown) => void;
+	constructor(this: this, game: unknown): void;
 
-	resetState: () => void;
-	save: (saveData: unknown) => void;
-	load: (saveData: unknown) => void;
-	update: () => void;
+	resetState(this: this): void;
+	save(this: this, saveData: unknown): void;
+	load(this: this, saveData: unknown): void;
+	update(this: this): void;
 
-	getChallenge: (name: string) => unknown;
-	anyChallengeActive: () => boolean;
-	isActive: (challenge: string) => boolean;
-	researchChallenge: (challenge: string) => void;
-	onRunReset: () => void;
-	applyPending: (isIronWillPending: boolean) => void;
+	getChallenge(this: this, name: string): unknown;
+	anyChallengeActive(this: this): boolean;
+	isActive(this: this, challenge: string): boolean;
+	researchChallenge(this: this, challenge: string): void;
+	onRunReset(this: this): void;
+	applyPending(this: this, isIronWillPending: boolean): void;
 }
-
