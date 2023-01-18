@@ -46,9 +46,3 @@ export type GetPath<O, P extends string> = P extends `${infer A}.${infer B}`
   : P extends StringKeys<O>
   ? GetStringKey<O, P>
   : never;
-
-declare function get<O, P extends string>(obj: O, path: AutoPath<O, P>): GetPath<O, P>;
-declare function getString<O, P extends string>(
-  obj: O,
-  path: AutoPath<O, P, string>
-): GetPath<O, P>;

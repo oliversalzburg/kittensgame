@@ -1,5 +1,3 @@
 module.exports = {
-  printWidth: 100,
-  arrowParens: "avoid",
-  
+  printWidth: 100
 };
