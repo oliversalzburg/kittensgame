@@ -23,7 +23,9 @@ export interface TabManager extends Control {
   resetStateResearch(this: this): void;
 }
 
-export interface Console {}
+export interface Console {
+  new (game: GamePage);
+}
 
 export interface ButtonController {}
 export interface Button extends Control {}

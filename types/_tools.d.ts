@@ -46,3 +46,5 @@ export type GetPath<O, P extends string> = P extends `${infer A}.${infer B}`
   : P extends StringKeys<O>
   ? GetStringKey<O, P>
   : never;
+
+export type AnyFunction = (...args: Array<unknown>) => unknown;

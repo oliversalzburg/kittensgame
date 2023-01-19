@@ -27,6 +27,7 @@ import {
   ButtonModernController,
   ContentRowRenderer,
   Control,
+  Console,
   IChildrenAware,
   IGameAware,
   Panel,
@@ -34,7 +35,7 @@ import {
   tab,
   TabManager,
 } from "./core";
-import { AutoPath, GetPath } from "./_tools";
+import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
   classes: {
@@ -113,7 +114,21 @@ interface DojoDeclare {
 export type Dojo = {
   declare: DojoDeclare;
   empty: (arg: unknown) => unknown;
+  hitch: <TFunction>(bindThis: unknown, bindMethod: TFunction) => TFunction;
+  subscribe: (event: string, handler: AnyFunction) => void;
 };
+
+export interface NewRelicInteraction {
+  save(): void;
+}
+export interface NewRelic {
+  addRelease(id: string, version: string): void;
+  setCustomAttribute(id: string, value: string): void;
+  setErrorHandler(handler: (err: Error) => boolean): void;
+  addPageAction(type: string, payload: unknown): void;
+  setCurrentRouteName(route: string): void;
+  interaction(): NewRelicInteraction;
+}
 
 export type React = {
   createClass: (arg: unknown) => unknown;
@@ -134,6 +149,7 @@ declare global {
   const React: React;
 
   interface Window {
+    newrelic?: NewRelic;
     LCstorage:
       | Storage
       | {
