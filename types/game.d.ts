@@ -144,9 +144,9 @@ export interface GamePage {
   workshop: null;
   diplomacy: null;
   achievements: null;
-  console: null;
-  telemetry: null;
-  server: null;
+  console: Console | null;
+  telemetry: Telemetry | null;
+  server: Server | null;
   math: null;
   loadingSave: boolean;
   globalEffectsCached: {};
@@ -205,7 +205,7 @@ export interface GamePage {
   getEffect(this: this, effectName: string): number;
   updateCaches(this: this): void;
   getLimitedDR(this: this, effect: unknown, limit: number): unknown;
-  msg(this: this, message: string, type: unknown, tag: unknown, noBullet: boolean): unknown;
+  msg(this: this, message: string, type?: unknown, tag?: unknown, noBullet?: boolean): unknown;
   clearLog(this: this): void;
   saveUI(this: this): void;
   resetState(this: this): void;
@@ -228,10 +228,10 @@ export interface GamePage {
   saveImport(this: this): void;
   saveToFile(this: this, withFullName: boolean): void;
   saveExportDropbox(this: this): void;
-  getDropboxAuthUrl(this: this): void;
+  getDropboxAuthUrl(this: this): string;
   exportToDropbox(this: this, lzdata: string, callback: () => void): void;
   saveImportDropbox(this: this): void;
-  importFromDropbox(this: this, callback: () => void): void;
+  importFromDropbox(this: this, callback: (msg: string) => void): void;
   saveImportDropboxFileRead(this: this, callback: () => void): void;
   saveImportDropboxText(this: this, lzdata: string, callback: () => void): void;
   _loadSaveJson(this: this, lzdata: string, callback: () => void): void;

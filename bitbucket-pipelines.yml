@@ -1,30 +1,47 @@
-image: node:10.15.3
+clone:
+  depth: 1
+
+definitions:
+  caches:
+    nodecustom: ./node_modules
+    yarncustom: /usr/local/share/.cache/yarn
+
+image: node:18-buster
 
 pipelines:
-  branches:
-    '{master,dev/*}':
-    - step:
-        # runs-on: self.hosted
-        name: 'Setup'
+  default:
+    - step: &default-qa
+        name: QA
         caches:
           - nodecustom
           - yarncustom
         script:
           - yarn
-          - yarn lint
+          # Running `yarn lint` is silent. Run full check in CI
+          - yarn eslint *.js js/*.js
           - yarn test
+          - yarn tsc
+
+  branches:
+    '{master,dev/*}':
     - step:
-        name: 'Deploy'
+        <<: *default-qa
+    - step:
+        script:
+          - |
+            # Still needs to be verified to be working.
+            # We don't want to attempt a deploy on forks.
+            echo $BITBUCKET_REPO_FULL_NAME
+            echo $BITBUCKET_REPO_SLUG
+            if [[ $BITBUCKET_REPO_FULL_NAME != "bloodrizer/kitten-game" ]]; then
+              exit 0
+            fi
+    - step:
+        name: Deploy
         script:
             - pipe: atlassian/ssh-run:0.2.3
               variables:
-                SSH_USER: 'bloodrizer'
-                SERVER: '104.248.76.129'
-                MODE: 'command'
-                COMMAND: '/var/www/kittensgame.com/html/deploy.sh'
-                
-                
-definitions:
-  caches:
-    nodecustom: ./node_modules
-    yarncustom: /usr/local/share/.cache/yarn
+                SSH_USER: bloodrizer
+                SERVER: 104.248.76.129
+                MODE: command
+                COMMAND: /var/www/kittensgame.com/html/deploy.sh
