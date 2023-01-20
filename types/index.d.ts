@@ -1,4 +1,5 @@
 import { Math } from "./js/math";
+import { ResourceManager } from "./js/resources";
 import {
   EffectsManager,
   GamePage,
@@ -48,6 +49,7 @@ export type ClassesList = {
     };
     managers: {
       ChallengesManager: ChallengesManager;
+      ResourceManager: ResourceManager;
     };
     reserveMan: reserveMan;
     tab: {

@@ -1,4 +1,6 @@
 import { Console } from "./core";
+import { Math } from "./js/math";
+import { ResourceManager } from "./js/resources";
 
 export interface Handler {
   phase: number;
@@ -138,7 +140,7 @@ export type GameOptions = {
 export interface GamePage {
   id: string | null;
   tabs: Array<unknown> | null;
-  resPool: null;
+  resPool: ResourceManager | null;
   calendar: null;
   bld: null;
   village: null;
@@ -149,7 +151,7 @@ export interface GamePage {
   console: Console | null;
   telemetry: Telemetry | null;
   server: Server | null;
-  math: null;
+  math: Math | null;
   loadingSave: boolean;
   globalEffectsCached: {};
   ticksPerSecond: number;
