@@ -24,7 +24,25 @@ export interface TabManager extends Control {
 }
 
 export interface Console {
+  static: {
+    filters: Record<string, unknown>;
+  };
+
+  messages: Array<unknown> | null;
+  maxMessages: number;
+  messageIdCounter: number;
+  ui: null;
+  game: GamePage | null;
+  filters?: Record<string, unknown>;
+
+  constructor(this: this, game: GamePage): unknown;
   new (game: GamePage);
+
+  msg(this: this, message: string, type: string, tag: string, noBullet: boolean): void;
+  clear(this: this): void;
+  resetState(this: this): void;
+  save(this: this, saveData: unknown): void;
+  load(this: this, saveData: unknown): void;
 }
 
 export interface ButtonController {}

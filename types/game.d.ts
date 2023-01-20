@@ -1,3 +1,5 @@
+import { Console } from "./core";
+
 export interface Handler {
   phase: number;
   frequency: number;
@@ -204,12 +206,12 @@ export interface GamePage {
   getEffectMeta(this: this, effectName: string): void;
   getEffect(this: this, effectName: string): number;
   updateCaches(this: this): void;
-  getLimitedDR(this: this, effect: unknown, limit: number): unknown;
-  msg(this: this, message: string, type?: unknown, tag?: unknown, noBullet?: boolean): unknown;
+  getLimitedDR(this: this, effect: number, limit: number): unknown;
+  msg(this: this, message: string, type?: string, tag?: string, noBullet?: boolean): unknown;
   clearLog(this: this): void;
   saveUI(this: this): void;
   resetState(this: this): void;
-  _publish(this: this, topic: unknown, arg: unknown): void;
+  _publish(this: this, topic: string, arg: unknown): void;
   reload(this: this): void;
   save(this: this): void;
   _prepareSaveData<TSaveData>(this: this, saveData: TSaveData): TSaveData;

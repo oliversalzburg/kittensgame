@@ -1,3 +1,4 @@
+import { Math } from "./js/math";
 import {
   EffectsManager,
   GamePage,
@@ -71,6 +72,7 @@ export type ComInterface = {
         log: {
           Console: Console;
         };
+        Math: Math;
         ui: {
           ButtonController: ButtonController;
           Button: Button;
@@ -112,9 +114,16 @@ interface DojoDeclare {
 }
 
 export type Dojo = {
+  version: {
+    minor: number;
+  };
+  byId: (id: string) => HTMLElement;
+  clone: <TSubject>(subject: TSubject) => TSubject;
   declare: DojoDeclare;
   empty: (arg: unknown) => unknown;
   hitch: <TFunction>(bindThis: unknown, bindMethod: TFunction) => TFunction;
+  publish: (topic: string, arg: Array<unknown> | unknown) => void;
+  style: (element: HTMLElement, attribute: string, value: string) => void;
   subscribe: (event: string, handler: AnyFunction) => void;
 };
 
@@ -139,21 +148,24 @@ interface TranslateFunction {
   (literal: string, args: Array<number | string>): string;
 }
 
+export type LCstorage =
+  | Storage
+  | {
+      removeItem?: () => void;
+    };
+
 declare global {
   const $I: TranslateFunction;
   const classes: ClassesList["classes"];
   const com: ComInterface["com"];
   const dojo: Dojo;
   const gamePage: GamePage;
+  const LCstorage: LCstorage;
   const mixin: Mixins["mixin"];
   const React: React;
 
   interface Window {
     newrelic?: NewRelic;
-    LCstorage:
-      | Storage
-      | {
-          removeItem?: () => void;
-        };
+    LCstorage: LCstorage;
   }
 }
