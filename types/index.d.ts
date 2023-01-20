@@ -28,6 +28,7 @@ import {
   Timer,
   UndoChange,
 } from "./game";
+import { Achievements, AchievementsPanel, AchTab, BadgesPanel } from "./js/achievements";
 import { Calendar, Event } from "./js/calendar";
 import {
   ChallengeBtnController,
@@ -49,6 +50,7 @@ export type ClassesList = {
       UndoChange: UndoChange;
     };
     managers: {
+      Achievements: Achievements;
       ChallengesManager: ChallengesManager;
       ResourceManager: ResourceManager;
     };
@@ -57,6 +59,8 @@ export type ClassesList = {
       ChallengesTab: ChallengesTab;
     };
     ui: {
+      AchievementsPanel: AchievementsPanel;
+      BadgesPanel: BadgesPanel;
       ChallengeBtnController: ChallengeBtnController;
       ChallengePanel: ChallengePanel;
     };
@@ -95,7 +99,9 @@ export type ComInterface = {
           GamePage: GamePage;
           Panel: Panel;
           Spacer: Spacer;
-          tab: tab;
+          tab: tab & {
+            AchTab: AchTab;
+          };
         };
       };
     };
