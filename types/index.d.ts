@@ -1,21 +1,3 @@
-import { Math } from "./js/math";
-import { ResourceManager } from "./js/resources";
-import {
-  EffectsManager,
-  GamePage,
-  IDataStorageAware,
-  Server,
-  Telemetry,
-  Timer,
-  UndoChange,
-} from "./game";
-import {
-  ChallengeBtnController,
-  ChallengePanel,
-  ChallengesManager,
-  ChallengesTab,
-  reserveMan,
-} from "./js/challenges";
 import {
   BuildingBtn,
   BuildingBtnController,
@@ -27,9 +9,9 @@ import {
   ButtonController,
   ButtonModern,
   ButtonModernController,
+  Console,
   ContentRowRenderer,
   Control,
-  Console,
   IChildrenAware,
   IGameAware,
   Panel,
@@ -37,6 +19,25 @@ import {
   tab,
   TabManager,
 } from "./core";
+import {
+  EffectsManager,
+  GamePage,
+  IDataStorageAware,
+  Server,
+  Telemetry,
+  Timer,
+  UndoChange,
+} from "./game";
+import { Calendar, Event } from "./js/calendar";
+import {
+  ChallengeBtnController,
+  ChallengePanel,
+  ChallengesManager,
+  ChallengesTab,
+  reserveMan,
+} from "./js/challenges";
+import { Math } from "./js/math";
+import { ResourceManager } from "./js/resources";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
@@ -70,6 +71,10 @@ export type ComInterface = {
         TabManager: TabManager;
       };
       game: {
+        Calendar: Calendar;
+        calendar: {
+          Event: Event;
+        };
         EffectsManager: EffectsManager;
         log: {
           Console: Console;
@@ -121,8 +126,11 @@ export type Dojo = {
   };
   byId: (id: string) => HTMLElement;
   clone: <TSubject>(subject: TSubject) => TSubject;
+  connect: (subject: unknown, event: string, bindThis: unknown, callback: () => unknown) => void;
   declare: DojoDeclare;
+  destroy: (subject: unknown) => void;
   empty: (arg: unknown) => unknown;
+  forEach: <T>(subject: Array<T>, callback: (element: T) => void) => void;
   hitch: <TFunction>(bindThis: unknown, bindMethod: TFunction) => TFunction;
   publish: (topic: string, arg: Array<unknown> | unknown) => void;
   style: (element: HTMLElement, attribute: string, value: string) => void;

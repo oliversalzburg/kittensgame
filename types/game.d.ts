@@ -1,4 +1,5 @@
 import { Console } from "./core";
+import { Calendar } from "./js/calendar";
 import { Math } from "./js/math";
 import { ResourceManager } from "./js/resources";
 
@@ -141,7 +142,7 @@ export interface GamePage {
   id: string | null;
   tabs: Array<unknown> | null;
   resPool: ResourceManager | null;
-  calendar: null;
+  calendar: Calendar | null;
   bld: null;
   village: null;
   science: null;
