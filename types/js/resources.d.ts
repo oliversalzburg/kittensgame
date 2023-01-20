@@ -1,10 +1,34 @@
 import { TabManager } from "../core";
 import { GamePage } from "../game";
 
-export interface ResourceManager extends TabManager {
-  resourceData: Array<unknown>;
+export type Resource = {
+  name: string;
+  title: string;
+  type: "common" | "exotic" | "rare" | "uncommon";
+  visible?: boolean;
+  calculatePerTick?: boolean;
+  aiCanDestroy?: boolean;
+  craftable?: boolean;
+  tag?: "baseMetal" | "chemist" | "metallurgist";
+  isNotRefundable?: boolean;
+  color?: string;
+  display?: boolean;
+  transient?: boolean;
+  calculateOnYear?: boolean;
+  isRefundable?: (game: GamePage) => boolean;
+  persists?: boolean;
+  calculatePerDay?: boolean;
+  description?: string;
+  value?: number;
+  unlocked?: boolean;
+  maxValue?: number;
+  perTickCached?: number;
+};
 
-  resources: Array<unknown> | null;
+export interface ResourceManager extends TabManager {
+  resourceData: Array<Resource>;
+
+  resources: Array<Resource> | null;
   village: null;
   game: GamePage | null;
 
@@ -14,17 +38,17 @@ export interface ResourceManager extends TabManager {
 
   isLocked: boolean;
 
-  resourceMap?: Record<string, unknown>;
+  resourceMap?: Record<string, Resource>;
 
   constructor(this: this): void;
   new ();
 
-  get(this: this, name: string): unknown;
+  get(this: this, name: string): Resource | false;
   getPseudoResources(this: this): unknown;
   createResource(this: this, name: string): unknown;
   addRes(
     this: this,
-    res: unknown,
+    res: Resource,
     addedValue?: number,
     allowDuringParadoxes?: boolean,
     preventLimitCheck?: boolean
@@ -37,7 +61,7 @@ export interface ResourceManager extends TabManager {
   enforceLimits(this: this, limits: unknown): unknown;
   resConsHackForResTable(this: this): unknown;
   addBarnWarehouseRatio(this: this, effects: unknown): unknown;
-  addResMaxRatios(this: this, res: unknown, maxValue: number): number;
+  addResMaxRatios(this: this, res: Resource, maxValue: number): number;
   setVillage(this: this, village: unknown): void;
   reset(this: this): void;
   resetState(this: this): void;
@@ -52,5 +76,5 @@ export interface ResourceManager extends TabManager {
   getVoidQuantityStatistically(this: this): number;
   setDisplayAll(this: this): void;
   toggleLock(this: this): void;
-  isNormalCraftableResource(this: this, res: unknown): void;
+  isNormalCraftableResource(this: this, res: Resource): boolean;
 }
