@@ -65,6 +65,33 @@ import {
   TradeButtonController,
 } from "./js/diplomacy";
 import { Math } from "./js/math";
+import {
+  BurnParagonBtnController,
+  PrestigeBtnController,
+  PrestigeManager,
+  PrestigePanel,
+  turnHGOffButtonController,
+} from "./js/prestige";
+import {
+  CryptotheologyPanel,
+  CryptotheologyWGT,
+  MultiLinkBtn,
+  PactsBtnController,
+  pactsManager,
+  PactsPanel,
+  PactsWGT,
+  PraiseBtnController,
+  RefineBtn,
+  RefineTearsBtnController,
+  ReligionBtnController,
+  ReligionManager,
+  ReligionTab,
+  ResetFaithBtnController,
+  TranscendBtnController,
+  TranscendenceBtnController,
+  TransformBtnController,
+  ZigguratBtnController,
+} from "./js/religion";
 import { ResourceManager } from "./js/resources";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
@@ -97,9 +124,14 @@ export type ClassesList = {
       BuildingsManager: BuildingsManager;
       ChallengesManager: ChallengesManager;
       DiplomacyManager: DiplomacyManager;
+      PrestigeManager: PrestigeManager;
+      ReligionManager: ReligionManager;
       ResourceManager: ResourceManager;
     };
     Metadata: Metadata;
+    religion: {
+      pactsManager: pactsManager;
+    };
     reserveMan: reserveMan;
     tab: {
       ChallengesTab: ChallengesTab;
@@ -118,8 +150,23 @@ export type ClassesList = {
         StagingBldBtn: StagingBldBtn;
         StagingBldBtnController: StagingBldBtnController;
       };
+      BurnParagonBtnController: BurnParagonBtnController;
       ChallengeBtnController: ChallengeBtnController;
       ChallengePanel: ChallengePanel;
+      CryptotheologyPanel: CryptotheologyPanel;
+      CryptotheologyWGT: CryptotheologyWGT;
+      PactsPanel: PactsPanel;
+      PactsWGT: PactsWGT;
+      PrestigeBtnController: PrestigeBtnController;
+      PrestigePanel: PrestigePanel;
+      religion: {
+        MultiLinkBtn: MultiLinkBtn;
+        RefineBtn: RefineBtn;
+        RefineTearsBtnController: RefineTearsBtnController;
+        TransformBtnController: TransformBtnController;
+      };
+      TranscendenceBtnController: TranscendenceBtnController;
+      turnHGOffButtonController: turnHGOffButtonController;
     };
   };
 };
@@ -155,15 +202,22 @@ export type ComInterface = {
           ContentRowRenderer: ContentRowRenderer;
           CrashBcoinButtonController: CrashBcoinButtonController;
           GamePage: GamePage;
+          PactsBtnController: PactsBtnController;
           Panel: Panel;
+          PraiseBtnController: PraiseBtnController;
+          ReligionBtnController: ReligionBtnController;
+          ResetFaithBtnController: ResetFaithBtnController;
           Spacer: Spacer;
           tab: tab & {
             AchTab: AchTab;
             BuildingsModern: BuildingsModern;
             Diplomacy: Diplomacy;
+            ReligionTab: ReligionTab;
           };
           TradeButton: TradeButton;
           TradeButtonController: TradeButtonController;
+          TranscendBtnController: TranscendBtnController;
+          ZigguratBtnController: ZigguratBtnController;
         };
       };
     };
