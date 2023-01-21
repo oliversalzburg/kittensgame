@@ -29,6 +29,18 @@ import {
   UndoChange,
 } from "./game";
 import { Achievements, AchievementsPanel, AchTab, BadgesPanel } from "./js/achievements";
+import {
+  BuildingBtnModernController,
+  BuildingMeta,
+  BuildingsManager,
+  BuildingsModern,
+  GatherCatnipButtonController,
+  Metadata,
+  RefineCatnipButton,
+  RefineCatnipButtonController,
+  StagingBldBtn,
+  StagingBldBtnController,
+} from "./js/buildings";
 import { Calendar, Event } from "./js/calendar";
 import {
   ChallengeBtnController,
@@ -37,30 +49,75 @@ import {
   ChallengesTab,
   reserveMan,
 } from "./js/challenges";
+import {
+  autoPinnedButton,
+  autoPinnedButtonController,
+  CrashBcoinButtonController,
+  Diplomacy,
+  DiplomacyManager,
+  EldersPanel,
+  EmbassyButton,
+  EmbassyButtonController,
+  RacePanel,
+  SendExplorersButton,
+  SendExplorersButtonController,
+  TradeButton,
+  TradeButtonController,
+} from "./js/diplomacy";
 import { Math } from "./js/math";
 import { ResourceManager } from "./js/resources";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
   classes: {
+    BuildingMeta: BuildingMeta;
+    diplomacy: {
+      ui: {
+        autoPinnedButton: autoPinnedButton;
+        autoPinnedButtonController: autoPinnedButtonController;
+        EldersPanel: EldersPanel;
+        EmbassyButton: EmbassyButton;
+        EmbassyButtonController: EmbassyButtonController;
+        RacePanel: RacePanel;
+      };
+    };
     game: {
       Server: Server;
       Telemetry: Telemetry;
       Timer: Timer;
+      ui: {
+        GatherCatnipButtonController: GatherCatnipButtonController;
+        RefineCatnipButton: RefineCatnipButton;
+        RefineCatnipButtonController: RefineCatnipButtonController;
+      };
       UndoChange: UndoChange;
     };
     managers: {
       Achievements: Achievements;
+      BuildingsManager: BuildingsManager;
       ChallengesManager: ChallengesManager;
+      DiplomacyManager: DiplomacyManager;
       ResourceManager: ResourceManager;
     };
+    Metadata: Metadata;
     reserveMan: reserveMan;
     tab: {
       ChallengesTab: ChallengesTab;
     };
+    trade: {
+      ui: {
+        SendExplorersButton: SendExplorersButton;
+        SendExplorersButtonController: SendExplorersButtonController;
+      };
+    };
     ui: {
       AchievementsPanel: AchievementsPanel;
       BadgesPanel: BadgesPanel;
+      btn: {
+        BuildingBtnModernController: BuildingBtnModernController;
+        StagingBldBtn: StagingBldBtn;
+        StagingBldBtnController: StagingBldBtnController;
+      };
       ChallengeBtnController: ChallengeBtnController;
       ChallengePanel: ChallengePanel;
     };
@@ -96,12 +153,17 @@ export type ComInterface = {
           BuildingNotStackableBtnController: BuildingNotStackableBtnController;
           BuildingResearchBtn: BuildingResearchBtn;
           ContentRowRenderer: ContentRowRenderer;
+          CrashBcoinButtonController: CrashBcoinButtonController;
           GamePage: GamePage;
           Panel: Panel;
           Spacer: Spacer;
           tab: tab & {
             AchTab: AchTab;
+            BuildingsModern: BuildingsModern;
+            Diplomacy: Diplomacy;
           };
+          TradeButton: TradeButton;
+          TradeButtonController: TradeButtonController;
         };
       };
     };
