@@ -125,6 +125,7 @@ import {
   VoidSpaceBtnController,
   VoidSpaceWgt,
 } from "./js/time";
+import { Toolbar, ToolbarEnergy, ToolbarHappiness, ToolbarIcon, ToolbarMOTD } from "./js/toolbar";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
@@ -225,6 +226,13 @@ export type ClassesList = {
         VoidSpaceBtnController: VoidSpaceBtnController;
       };
       TimeControlWgt: TimeControlWgt;
+      toolbar: {
+        ToolbarEnergy: ToolbarEnergy;
+        ToolbarHappiness: ToolbarHappiness;
+        ToolbarMOTD: ToolbarMOTD;
+      };
+      Toolbar: Toolbar;
+      ToolbarIcon: ToolbarIcon;
       TranscendenceBtnController: TranscendenceBtnController;
       turnHGOffButtonController: turnHGOffButtonController;
       VoidSpaceWgt: VoidSpaceWgt;
