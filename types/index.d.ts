@@ -127,6 +127,25 @@ import {
 } from "./js/time";
 import { Toolbar, ToolbarEnergy, ToolbarHappiness, ToolbarIcon, ToolbarMOTD } from "./js/toolbar";
 import { DesktopUI, IReactAware, UISystem } from "./js/ui";
+import {
+  BiomeBtn,
+  BiomeBtnController,
+  Census,
+  CensusPanel,
+  FestivalButton,
+  FestivalButtonController,
+  JobButton,
+  JobButtonController,
+  Kitten,
+  KittenSim,
+  Map,
+  MapOverviewWgt,
+  UpgradeExplorersController,
+  UpgradeHQController,
+  Village,
+  VillageButtonController,
+  VillageManager,
+} from "./js/village";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
@@ -165,6 +184,7 @@ export type ClassesList = {
       SpaceManager: SpaceManager;
       StatsManager: StatsManager;
       TimeManager: TimeManager;
+      VillageManager: VillageManager;
     };
     Metadata: Metadata;
     queue: {
@@ -238,7 +258,26 @@ export type ClassesList = {
       TranscendenceBtnController: TranscendenceBtnController;
       turnHGOffButtonController: turnHGOffButtonController;
       UISystem: UISystem;
+      village: {
+        BiomeBtn: BiomeBtn;
+        BiomeBtnController: BiomeBtnController;
+        Census: Census;
+      };
       VoidSpaceWgt: VoidSpaceWgt;
+    };
+    village: {
+      KittenSim: KittenSim;
+      Map: Map;
+      ui: {
+        FestivalButton: FestivalButton;
+        FestivalButtonController: FestivalButtonController;
+        map: {
+          UpgradeExplorersController: UpgradeExplorersController;
+          UpgradeHQController: UpgradeHQController;
+        };
+        MapOverviewWgt: MapOverviewWgt;
+        VillageButtonController: VillageButtonController;
+      };
     };
   };
 };
@@ -271,9 +310,12 @@ export type ComInterface = {
           BuildingStackableBtn: BuildingStackableBtn;
           BuildingNotStackableBtnController: BuildingNotStackableBtnController;
           BuildingResearchBtn: BuildingResearchBtn;
+          CensusPanel: CensusPanel;
           ContentRowRenderer: ContentRowRenderer;
           CrashBcoinButtonController: CrashBcoinButtonController;
           GamePage: GamePage;
+          JobButton: JobButton;
+          JobButtonController: JobButtonController;
           PactsBtnController: PactsBtnController;
           Panel: Panel;
           PraiseBtnController: PraiseBtnController;
@@ -288,12 +330,16 @@ export type ComInterface = {
             Library: Library;
             ReligionTab: ReligionTab;
             SpaceTab: SpaceTab;
+            Village: Village;
           };
           TechButtonController: TechButtonController;
           TradeButton: TradeButton;
           TradeButtonController: TradeButtonController;
           TranscendBtnController: TranscendBtnController;
           ZigguratBtnController: ZigguratBtnController;
+        };
+        village: {
+          Kitten: Kitten;
         };
       };
     };
