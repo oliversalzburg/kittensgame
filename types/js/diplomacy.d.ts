@@ -4,6 +4,7 @@ import {
   ButtonModernController,
   Panel,
   tab,
+  TabOptions,
 } from "../core";
 import { GamePage } from "../game";
 
@@ -20,6 +21,6 @@ export interface autoPinnedButton extends ButtonModern {}
 export interface SendExplorersButtonController extends ButtonModernController {}
 export interface SendExplorersButton extends ButtonModern {}
 export interface Diplomacy extends tab {
-  constructor(this: this, tabName: string, game: GamePage): void;
+  constructor(this: this, tabName: TabOptions, game: GamePage): void;
   new (tabName: string, game: GamePage);
 }

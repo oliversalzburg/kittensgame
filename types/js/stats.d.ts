@@ -24,15 +24,21 @@ export interface Stat {
   calculate?: (game: GamePage) => number | string;
 }
 
-export interface StatsManager extends TabManager {
+export interface StatsManager extends TabManager<Stat> {
   game: GamePage | null;
   stats: Array<Stat>;
   statsCurrent: Array<Stat>;
   statGroups: Array<{ group: Array<Stat>; title: string }> | null;
 
   resetState(this: this): void;
-  save(this: this, saveData: unknown): void;
-  load(this: this, saveData: unknown): void;
+  save(
+    this: this,
+    saveData: { stats?: Array<Partial<Stat>>; statsCurrent?: Array<Partial<Stat>> }
+  ): void;
+  load(
+    this: this,
+    saveData: { stats: Array<Partial<Stat>>; statsCurrent: Array<Partial<Stat>> }
+  ): void;
   getStat(this: this, name: string): void;
   getStatCurrent(this: this, name: string): void;
   resetStatsCurrent(this: this): void;
@@ -45,7 +51,6 @@ export interface StatsTab extends tab {
   constructor(this: this): void;
   new ();
 
-  render(this: this, content: HTMLElement):void;
-  update(this: this):void;
-	
+  render(this: this, content: HTMLElement): void;
+  update(this: this): void;
 }

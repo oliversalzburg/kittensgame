@@ -2,9 +2,9 @@ import { GamePage } from "./game";
 
 export interface Control {}
 
-export interface TabManager extends Control {
+export interface TabManager<TMetadata = unknown> extends Control {
   effectsCachedExisting: Record<string, unknown> | null;
-  meta: Array<unknown> | null;
+  meta: Array<TMetadata> | null;
   panelData: Record<string, unknown> | null;
 
   constructor(this: this, _game: GamePage): unknown;
@@ -16,9 +16,18 @@ export interface TabManager extends Control {
   updateMetaEffectCached(this: this, metadata: unknown): void;
   _hasLimitedDiminishingReturn(this: this, name: string): boolean;
   getMetaEffect(this: this, name: string, metadata: unknown): unknown;
-  getMeta(this: this, name: string, metadata: unknown): unknown;
-  loadMetadata(this: this, meta: unknown, saveMeta: unknown, metaId?: string): unknown;
-  filterMetadata(this: this, meta: unknown, fields: Array<string>): unknown;
+  getMeta(this: this, name: string, metadata: Array<TMetadata>): TMetadata;
+  loadMetadata(
+    this: this,
+    meta: Array<TMetadata>,
+    saveMeta: Array<Partial<TMetadata>>,
+    metaId?: string
+  ): unknown;
+  filterMetadata<TFields extends keyof TMetadata>(
+    this: this,
+    meta: Array<TMetadata>,
+    fields: Array<TFields>
+  ): Array<Pick<TMetadata, TFields>>;
   resetStateStackable(this: this, bld: unknown): void;
   resetStateResearch(this: this): void;
 }

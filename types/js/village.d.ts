@@ -7,6 +7,7 @@ import {
   Panel,
   tab,
   TabManager,
+  TabOptions,
 } from "../core";
 import { GamePage } from "../game";
 
@@ -29,6 +30,6 @@ export interface VillageButtonController extends ButtonModernController {}
 export interface FestivalButtonController extends VillageButtonController {}
 export interface FestivalButton extends ButtonModern {}
 export interface Village extends tab {
-  constructor(this: this, tabName: string, game: GamePage): void;
+  constructor(this: this, tabName: TabOptions, game: GamePage): void;
   new (tabName: string, game: GamePage);
 }
