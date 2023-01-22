@@ -146,6 +146,7 @@ import {
   VillageButtonController,
   VillageManager,
 } from "./js/village";
+import { RorshachWgt, VoidManager } from "./js/void";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
@@ -185,6 +186,7 @@ export type ClassesList = {
       StatsManager: StatsManager;
       TimeManager: TimeManager;
       VillageManager: VillageManager;
+      VoidManager: VoidManager;
     };
     Metadata: Metadata;
     queue: {
@@ -233,6 +235,7 @@ export type ClassesList = {
         TransformBtnController: TransformBtnController;
       };
       ResetWgt: ResetWgt;
+      RorshachWgt: RorshachWgt;
       space: {
         FurthestRingPanel: FurthestRingPanel;
         PlanetBuildingBtnController: PlanetBuildingBtnController;
