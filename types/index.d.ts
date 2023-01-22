@@ -100,6 +100,14 @@ import {
   ScienceManager,
   TechButtonController,
 } from "./js/science";
+import {
+  FurthestRingPanel,
+  PlanetBuildingBtnController,
+  PlanetPanel,
+  SpaceManager,
+  SpaceProgramBtnController,
+  SpaceTab,
+} from "./js/space";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
@@ -135,6 +143,7 @@ export type ClassesList = {
       ReligionManager: ReligionManager;
       ResourceManager: ResourceManager;
       ScienceManager: ScienceManager;
+      SpaceManager: SpaceManager;
     };
     Metadata: Metadata;
     religion: {
@@ -174,6 +183,11 @@ export type ClassesList = {
         RefineBtn: RefineBtn;
         RefineTearsBtnController: RefineTearsBtnController;
         TransformBtnController: TransformBtnController;
+      };
+      space: {
+        FurthestRingPanel: FurthestRingPanel;
+        PlanetBuildingBtnController: PlanetBuildingBtnController;
+        PlanetPanel: PlanetPanel;
       };
       TranscendenceBtnController: TranscendenceBtnController;
       turnHGOffButtonController: turnHGOffButtonController;
@@ -218,12 +232,14 @@ export type ComInterface = {
           ReligionBtnController: ReligionBtnController;
           ResetFaithBtnController: ResetFaithBtnController;
           Spacer: Spacer;
+          SpaceProgramBtnController: SpaceProgramBtnController;
           tab: tab & {
             AchTab: AchTab;
             BuildingsModern: BuildingsModern;
             Diplomacy: Diplomacy;
             Library: Library;
             ReligionTab: ReligionTab;
+            SpaceTab: SpaceTab;
           };
           TechButtonController: TechButtonController;
           TradeButton: TradeButton;
