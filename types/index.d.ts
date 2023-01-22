@@ -93,6 +93,13 @@ import {
   ZigguratBtnController,
 } from "./js/religion";
 import { ResourceManager } from "./js/resources";
+import {
+  Library,
+  PolicyBtnController,
+  PolicyPanel,
+  ScienceManager,
+  TechButtonController,
+} from "./js/science";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
@@ -127,6 +134,7 @@ export type ClassesList = {
       PrestigeManager: PrestigeManager;
       ReligionManager: ReligionManager;
       ResourceManager: ResourceManager;
+      ScienceManager: ScienceManager;
     };
     Metadata: Metadata;
     religion: {
@@ -157,6 +165,8 @@ export type ClassesList = {
       CryptotheologyWGT: CryptotheologyWGT;
       PactsPanel: PactsPanel;
       PactsWGT: PactsWGT;
+      PolicyBtnController: PolicyBtnController;
+      PolicyPanel: PolicyPanel;
       PrestigeBtnController: PrestigeBtnController;
       PrestigePanel: PrestigePanel;
       religion: {
@@ -212,8 +222,10 @@ export type ComInterface = {
             AchTab: AchTab;
             BuildingsModern: BuildingsModern;
             Diplomacy: Diplomacy;
+            Library: Library;
             ReligionTab: ReligionTab;
           };
+          TechButtonController: TechButtonController;
           TradeButton: TradeButton;
           TradeButtonController: TradeButtonController;
           TranscendBtnController: TranscendBtnController;
