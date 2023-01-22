@@ -8,8 +8,11 @@ import {
   tab,
   TabManager,
 } from "../core";
+import { GamePage } from "../game";
 
-export interface VillageManager extends TabManager {}
+export interface VillageManager extends TabManager {
+  new (game: GamePage);
+}
 export interface Kitten {}
 export interface Map {}
 export interface BiomeBtnController extends ButtonModernController {}
@@ -25,4 +28,7 @@ export interface CensusPanel extends Panel {}
 export interface VillageButtonController extends ButtonModernController {}
 export interface FestivalButtonController extends VillageButtonController {}
 export interface FestivalButton extends ButtonModern {}
-export interface Village extends tab {}
+export interface Village extends tab {
+  constructor(this: this, tabName: string, game: GamePage): void;
+  new (tabName: string, game: GamePage);
+}

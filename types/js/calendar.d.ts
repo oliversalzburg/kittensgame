@@ -215,6 +215,7 @@ export interface Calendar {
   observeTimeout(this: this): void;
 
   constructor(this: this, game: GamePage, displayElement: HTMLElement): void;
+  new (game: GamePage, displayElement: HTMLElement);
 
   render(this: this): void;
   update(this: this): void;

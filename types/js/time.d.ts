@@ -20,5 +20,8 @@ export interface VoidSpaceBtnController extends BuildingStackableBtnController {
 export interface FixCryochamberBtnController extends ButtonModernController {}
 export interface VoidSpaceWgt extends IChildrenAware, IGameAware {}
 export interface ResetWgt extends IChildrenAware, IGameAware {}
-export interface TimeTab extends tab {}
+export interface TimeTab extends tab {
+  constructor(this: this): void;
+  new ();
+}
 export interface manager {}

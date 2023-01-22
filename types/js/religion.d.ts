@@ -26,4 +26,7 @@ export interface PactsPanel extends Panel {}
 export interface PactsBtnController extends BuildingStackableBtnController {}
 export interface RefineBtn extends ButtonModern {}
 export interface pactsManager {}
-export interface ReligionTab extends tab {}
+export interface ReligionTab extends tab {
+  constructor(this: this): void;
+  new ();
+}

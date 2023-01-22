@@ -5,4 +5,7 @@ export interface SpaceProgramBtnController extends BuildingStackableBtnControlle
 export interface PlanetBuildingBtnController extends BuildingStackableBtnController {}
 export interface PlanetPanel extends Panel {}
 export interface FurthestRingPanel extends PlanetPanel {}
-export interface SpaceTab extends tab {}
+export interface SpaceTab extends tab {
+  constructor(this: this): void;
+  new ();
+}

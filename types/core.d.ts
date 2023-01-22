@@ -63,4 +63,7 @@ export interface IGameAware {}
 export interface IChildrenAware {}
 
 export interface Panel extends ContentRowRenderer, IChildrenAware {}
-export interface tab extends ContentRowRenderer, IChildrenAware {}
+export interface tab extends ContentRowRenderer, IChildrenAware {
+  constructor(this: this, opts: unknown, game: GamePage): void;
+  new (opts: unknown, game: GamePage);
+}

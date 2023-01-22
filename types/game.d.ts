@@ -1,7 +1,18 @@
-import { Console } from "./core";
+import { Console, tab } from "./core";
+import { AchTab } from "./js/achievements";
+import { BuildingsModern } from "./js/buildings";
 import { Calendar } from "./js/calendar";
+import { ChallengesTab } from "./js/challenges";
+import { Diplomacy } from "./js/diplomacy";
 import { Math } from "./js/math";
+import { ReligionTab } from "./js/religion";
 import { ResourceManager } from "./js/resources";
+import { Library } from "./js/science";
+import { SpaceTab } from "./js/space";
+import { StatsTab } from "./js/stats";
+import { TimeTab } from "./js/time";
+import { Village, VillageManager } from "./js/village";
+import { Workshop } from "./js/workshop";
 
 export interface Handler {
   phase: number;
@@ -109,6 +120,8 @@ export interface EffectsManager {
   game: GamePage | null;
 
   constructor(this: this, game: GamePage): void;
+  new (game: GamePage);
+
   effectMeta(this: this, effectName: string): unknown;
 
   statics: Record<string, unknown>;
@@ -144,7 +157,7 @@ export interface GamePage {
   resPool: ResourceManager | null;
   calendar: Calendar | null;
   bld: null;
-  village: null;
+  village: VillageManager | null;
   science: null;
   workshop: null;
   diplomacy: null;
@@ -199,6 +212,17 @@ export interface GamePage {
     "MAUSOLEUM_PACTS" | "QUEUE" | "SPACE_EXPL" | "VILLAGE_MAP",
     { beta: boolean; main: boolean }
   >;
+  bldTab?: BuildingsModern;
+  villageTab?: Village;
+  libraryTab?: Library;
+  workshopTab?: Workshop;
+  diplomacyTab?: Diplomacy;
+  religionTab?: ReligionTab;
+  spaceTab?: SpaceTab;
+  timeTab?: TimeTab;
+  challengesTab?: ChallengesTab;
+  achievementTab?: AchTab;
+  statsTab?: StatsTab;
 
   constructor(this: this, containerId: string): void;
 
@@ -297,7 +321,7 @@ export interface GamePage {
   ): string;
   getDisplayValue(this: this, floatVal: number, plusPrefix: boolean, precision: number): string;
   fixFloatPointNumber(this: this, number: number): number;
-  addTab(this: this, tab: unknown): void;
+  addTab(this: this, tab: tab): void;
   getTabById(this: this, tabId: string): unknown;
   isWebWorkerSupported(this: this): boolean;
   timestamp(this: this): number;

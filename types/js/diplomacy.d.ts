@@ -1,4 +1,11 @@
-import { BuildingStackableBtnController, ButtonModern, ButtonModernController, Panel, tab } from "../core";
+import {
+  BuildingStackableBtnController,
+  ButtonModern,
+  ButtonModernController,
+  Panel,
+  tab,
+} from "../core";
+import { GamePage } from "../game";
 
 export interface DiplomacyManager {}
 export interface RacePanel extends Panel {}
@@ -12,4 +19,7 @@ export interface autoPinnedButtonController extends ButtonModernController {}
 export interface autoPinnedButton extends ButtonModern {}
 export interface SendExplorersButtonController extends ButtonModernController {}
 export interface SendExplorersButton extends ButtonModern {}
-export interface Diplomacy extends tab {}
+export interface Diplomacy extends tab {
+  constructor(this: this, tabName: string, game: GamePage): void;
+  new (tabName: string, game: GamePage);
+}

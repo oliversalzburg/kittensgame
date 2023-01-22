@@ -58,6 +58,7 @@ export interface BadgesPanel extends Panel {
 
 export interface AchTab extends tab {
   constructor(this: this): void;
+  new();
 
   render(this: this, container: unknown): void;
   update(this: this): void;

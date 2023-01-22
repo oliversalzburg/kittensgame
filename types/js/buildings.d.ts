@@ -1,4 +1,11 @@
-import { BuildingStackableBtn, BuildingStackableBtnController, ButtonModern, ButtonModernController, tab, TabManager } from "../core";
+import {
+  BuildingStackableBtn,
+  BuildingStackableBtnController,
+  ButtonModern,
+  ButtonModernController,
+  tab,
+  TabManager,
+} from "../core";
 
 export interface Metadata {
   meta: Record<string, unknown> | null;
@@ -18,4 +25,7 @@ export interface RefineCatnipButton extends ButtonModern {}
 export interface BuildingBtnModernController extends BuildingStackableBtnController {}
 export interface StagingBldBtnController extends BuildingBtnModernController {}
 export interface StagingBldBtn extends BuildingStackableBtn {}
-export interface BuildingsModern extends tab {}
+export interface BuildingsModern extends tab {
+  constructor(this: this): void;
+  new();
+}
