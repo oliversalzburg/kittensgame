@@ -109,6 +109,22 @@ import {
   SpaceTab,
 } from "./js/space";
 import { StatsManager, StatsTab } from "./js/stats";
+import {
+  AccelerateTimeBtn,
+  AccelerateTimeBtnController,
+  ChronoforgeBtnController,
+  ChronoforgeWgt,
+  FixCryochamberBtnController,
+  manager,
+  ResetWgt,
+  ShatterTCBtn,
+  ShatterTCBtnController,
+  TimeControlWgt,
+  TimeManager,
+  TimeTab,
+  VoidSpaceBtnController,
+  VoidSpaceWgt,
+} from "./js/time";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
@@ -146,8 +162,12 @@ export type ClassesList = {
       ScienceManager: ScienceManager;
       SpaceManager: SpaceManager;
       StatsManager: StatsManager;
+      TimeManager: TimeManager;
     };
     Metadata: Metadata;
+    queue: {
+      manager: manager;
+    };
     religion: {
       pactsManager: pactsManager;
     };
@@ -155,6 +175,7 @@ export type ClassesList = {
     tab: {
       ChallengesTab: ChallengesTab;
       StatsTab: StatsTab;
+      TimeTab: TimeTab;
     };
     trade: {
       ui: {
@@ -173,6 +194,7 @@ export type ClassesList = {
       BurnParagonBtnController: BurnParagonBtnController;
       ChallengeBtnController: ChallengeBtnController;
       ChallengePanel: ChallengePanel;
+      ChronoforgeWgt: ChronoforgeWgt;
       CryptotheologyPanel: CryptotheologyPanel;
       CryptotheologyWGT: CryptotheologyWGT;
       PactsPanel: PactsPanel;
@@ -187,13 +209,25 @@ export type ClassesList = {
         RefineTearsBtnController: RefineTearsBtnController;
         TransformBtnController: TransformBtnController;
       };
+      ResetWgt: ResetWgt;
       space: {
         FurthestRingPanel: FurthestRingPanel;
         PlanetBuildingBtnController: PlanetBuildingBtnController;
         PlanetPanel: PlanetPanel;
       };
+      time: {
+        AccelerateTimeBtn: AccelerateTimeBtn;
+        AccelerateTimeBtnController: AccelerateTimeBtnController;
+        ChronoforgeBtnController: ChronoforgeBtnController;
+        FixCryochamberBtnController: FixCryochamberBtnController;
+        ShatterTCBtn: ShatterTCBtn;
+        ShatterTCBtnController: ShatterTCBtnController;
+        VoidSpaceBtnController: VoidSpaceBtnController;
+      };
+      TimeControlWgt: TimeControlWgt;
       TranscendenceBtnController: TranscendenceBtnController;
       turnHGOffButtonController: turnHGOffButtonController;
+      VoidSpaceWgt: VoidSpaceWgt;
     };
   };
 };
