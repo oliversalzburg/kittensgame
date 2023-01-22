@@ -147,6 +147,14 @@ import {
   VillageManager,
 } from "./js/village";
 import { RorshachWgt, VoidManager } from "./js/void";
+import {
+  CraftButton,
+  CraftButtonController,
+  UpgradeButtonController,
+  Workshop,
+  WorkshopManager,
+  ZebraUpgradeButtonController,
+} from "./js/workshop";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
@@ -187,6 +195,7 @@ export type ClassesList = {
       TimeManager: TimeManager;
       VillageManager: VillageManager;
       VoidManager: VoidManager;
+      WorkshopManager: WorkshopManager;
     };
     Metadata: Metadata;
     queue: {
@@ -315,6 +324,8 @@ export type ComInterface = {
           BuildingResearchBtn: BuildingResearchBtn;
           CensusPanel: CensusPanel;
           ContentRowRenderer: ContentRowRenderer;
+          CraftButton: CraftButton;
+          CraftButtonController: CraftButtonController;
           CrashBcoinButtonController: CrashBcoinButtonController;
           GamePage: GamePage;
           JobButton: JobButton;
@@ -334,11 +345,14 @@ export type ComInterface = {
             ReligionTab: ReligionTab;
             SpaceTab: SpaceTab;
             Village: Village;
+            Workshop: Workshop;
           };
           TechButtonController: TechButtonController;
           TradeButton: TradeButton;
           TradeButtonController: TradeButtonController;
           TranscendBtnController: TranscendBtnController;
+          UpgradeButtonController: UpgradeButtonController;
+          ZebraUpgradeButtonController: ZebraUpgradeButtonController;
           ZigguratBtnController: ZigguratBtnController;
         };
         village: {
