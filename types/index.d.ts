@@ -108,6 +108,7 @@ import {
   SpaceProgramBtnController,
   SpaceTab,
 } from "./js/space";
+import { StatsManager, StatsTab } from "./js/stats";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
@@ -144,6 +145,7 @@ export type ClassesList = {
       ResourceManager: ResourceManager;
       ScienceManager: ScienceManager;
       SpaceManager: SpaceManager;
+      StatsManager: StatsManager;
     };
     Metadata: Metadata;
     religion: {
@@ -152,6 +154,7 @@ export type ClassesList = {
     reserveMan: reserveMan;
     tab: {
       ChallengesTab: ChallengesTab;
+      StatsTab: StatsTab;
     };
     trade: {
       ui: {
