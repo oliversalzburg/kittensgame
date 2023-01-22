@@ -1,18 +1,20 @@
 import { Console, tab } from "./core";
-import { AchTab } from "./js/achievements";
-import { BuildingsModern } from "./js/buildings";
+import { Achievements, AchTab } from "./js/achievements";
+import { BuildingsManager, BuildingsModern } from "./js/buildings";
 import { Calendar } from "./js/calendar";
-import { ChallengesTab } from "./js/challenges";
-import { Diplomacy } from "./js/diplomacy";
+import { ChallengesManager, ChallengesTab } from "./js/challenges";
+import { Diplomacy, DiplomacyManager } from "./js/diplomacy";
 import { Math } from "./js/math";
-import { ReligionTab } from "./js/religion";
+import { PrestigeManager } from "./js/prestige";
+import { ReligionManager, ReligionTab } from "./js/religion";
 import { ResourceManager } from "./js/resources";
-import { Library } from "./js/science";
-import { SpaceTab } from "./js/space";
-import { StatsTab } from "./js/stats";
-import { TimeTab } from "./js/time";
+import { Library, ScienceManager } from "./js/science";
+import { SpaceManager, SpaceTab } from "./js/space";
+import { StatsManager, StatsTab } from "./js/stats";
+import { TimeManager, TimeTab } from "./js/time";
 import { Village, VillageManager } from "./js/village";
-import { Workshop } from "./js/workshop";
+import { VoidManager } from "./js/void";
+import { Workshop, WorkshopManager } from "./js/workshop";
 
 export interface Handler {
   phase: number;
@@ -156,12 +158,19 @@ export interface GamePage {
   tabs: Array<unknown> | null;
   resPool: ResourceManager | null;
   calendar: Calendar | null;
-  bld: null;
+  bld: BuildingsManager | null;
   village: VillageManager | null;
-  science: null;
-  workshop: null;
-  diplomacy: null;
-  achievements: null;
+  science: ScienceManager | null;
+  workshop: WorkshopManager | null;
+  diplomacy: DiplomacyManager | null;
+  achievements: Achievements | null;
+  religion?: ReligionManager;
+  space?: SpaceManager;
+  time?: TimeManager;
+  prestige?: PrestigeManager;
+  challenge?: ChallengesManager;
+  stats?: StatsManager;
+  void?: VoidManager;
   console: Console | null;
   telemetry: Telemetry | null;
   server: Server | null;
@@ -212,6 +221,7 @@ export interface GamePage {
     "MAUSOLEUM_PACTS" | "QUEUE" | "SPACE_EXPL" | "VILLAGE_MAP",
     { beta: boolean; main: boolean }
   >;
+
   bldTab?: BuildingsModern;
   villageTab?: Village;
   libraryTab?: Library;

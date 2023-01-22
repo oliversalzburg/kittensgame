@@ -63,7 +63,30 @@ export interface IGameAware {}
 export interface IChildrenAware {}
 
 export interface Panel extends ContentRowRenderer, IChildrenAware {}
+
+export interface TabOptions {
+  id: string;
+  name: string;
+}
+export interface TabButton {
+  game?: GamePage;
+  tab?: tab;
+  update(): void;
+}
 export interface tab extends ContentRowRenderer, IChildrenAware {
-  constructor(this: this, opts: unknown, game: GamePage): void;
-  new (opts: unknown, game: GamePage);
+  game: GamePage | null;
+  buttons: Array<TabButton> | null;
+
+  tabId: string | null;
+  tabName: string | null;
+  domNode: null;
+  visible: true;
+
+  constructor(this: this, opts: TabOptions, game: GamePage): void;
+  new (opts: TabOptions, game: GamePage);
+
+  render(this: this, tabContainer: HTMLElement): void;
+  update(this: this): void;
+  updateTab(this: this): void;
+  addButton(this: this, button: TabButton): void;
 }
