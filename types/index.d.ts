@@ -126,6 +126,7 @@ import {
   VoidSpaceWgt,
 } from "./js/time";
 import { Toolbar, ToolbarEnergy, ToolbarHappiness, ToolbarIcon, ToolbarMOTD } from "./js/toolbar";
+import { DesktopUI, IReactAware, UISystem } from "./js/ui";
 import { AnyFunction, AutoPath, GetPath } from "./_tools";
 
 export type ClassesList = {
@@ -198,6 +199,7 @@ export type ClassesList = {
       ChronoforgeWgt: ChronoforgeWgt;
       CryptotheologyPanel: CryptotheologyPanel;
       CryptotheologyWGT: CryptotheologyWGT;
+      DesktopUI: DesktopUI;
       PactsPanel: PactsPanel;
       PactsWGT: PactsWGT;
       PolicyBtnController: PolicyBtnController;
@@ -235,6 +237,7 @@ export type ClassesList = {
       ToolbarIcon: ToolbarIcon;
       TranscendenceBtnController: TranscendenceBtnController;
       turnHGOffButtonController: turnHGOffButtonController;
+      UISystem: UISystem;
       VoidSpaceWgt: VoidSpaceWgt;
     };
   };
@@ -302,6 +305,7 @@ export type Mixins = {
     IChildrenAware: IChildrenAware;
     IDataStorageAware: IDataStorageAware;
     IGameAware: IGameAware;
+    IReactAware: IReactAware;
   };
 };
 
@@ -346,6 +350,7 @@ export interface NewRelic {
 
 export type React = {
   createClass: (arg: unknown) => unknown;
+  createElement: (arg: unknown) => unknown;
 };
 
 interface TranslateFunction {
