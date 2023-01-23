@@ -1,4 +1,4 @@
-import { Panel, tab, TabManager } from "../core";
+import { Panel, SaveData, tab, TabManager } from "../core";
 import { GamePage } from "../game";
 
 export interface Achievement {
@@ -10,6 +10,8 @@ export interface Achievement {
   starCondition?: (this: Achievements) => boolean;
   hidden?: boolean;
   unethical?: boolean;
+  unlocked?: boolean;
+  starUnlocked?: boolean;
 }
 
 export interface Badge {
@@ -30,22 +32,23 @@ export interface Achievements extends TabManager {
   constructor(this: this, game: GamePage): void;
 
   get(this: this, name: string): unknown;
-  getBadge(this: this, name: string): unknown;
+  getBadge(this: this, name: string): Badge;
   unlockBadge(this: this, name: string): void;
   hasUnlocked(this: this): boolean;
-  update(this: this): boolean;
-  resetState(this: this): boolean;
-  save(this: this, saveData: unknown): void;
-  load(this: this, saveData: unknown): void;
-  unlockAll(this: this): boolean;
+  update(this: this): void;
+  resetState(this: this): void;
+  save(this: this, saveData: SaveData): void;
+  load(this: this, saveData: SaveData): void;
+  unlockAll(this: this): void;
 }
 
 export interface AchievementsPanel extends Panel {
   game: GamePage | null;
 
   constructor(this: this): void;
+  new ();
 
-  render(this: this): void;
+  render(this: this, container: HTMLElement): HTMLElement;
 }
 
 export interface BadgesPanel extends Panel {
@@ -53,13 +56,17 @@ export interface BadgesPanel extends Panel {
 
   constructor(this: this): void;
 
-  render(this: this): void;
+  render(this: this, container: HTMLElement): HTMLElement;
 }
 
 export interface AchTab extends tab {
-  constructor(this: this): void;
-  new();
+  achievementsPanel?: AchievementsPanel;
+  badgesPanel?: BadgesPanel;
+  container?: HTMLElement;
 
-  render(this: this, container: unknown): void;
+  constructor(this: this): void;
+  new ();
+
+  render(this: this, container: HTMLElement): HTMLElement;
   update(this: this): void;
 }
