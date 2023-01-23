@@ -11,9 +11,9 @@ export interface SaveData {
 
 export interface Control {}
 
-export interface Metadata {
+type Metadata = {
   name: string;
-}
+};
 
 export interface TabManager<TMetadata = unknown> extends Control {
   effectsCachedExisting: Record<string, unknown> | null;

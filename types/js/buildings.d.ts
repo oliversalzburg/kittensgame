@@ -17,7 +17,15 @@ export interface Metadata {
   set(this: this, attr: string, value: unknown): unknown;
 }
 
-export interface BuildingMeta extends Metadata {}
+export interface BuildingMeta extends Metadata {
+  _metaCache: null;
+  _metaCacheStage: null;
+
+  getMeta(this: this): Record<string, unknown>;
+  get(this: this, attr: string): unknown;
+  set(this: this, attr: string, value: unknown): unknown;
+}
+
 export interface BuildingsManager extends TabManager {}
 export interface GatherCatnipButtonController extends ButtonModernController {}
 export interface RefineCatnipButtonController extends ButtonModernController {}
@@ -27,5 +35,5 @@ export interface StagingBldBtnController extends BuildingBtnModernController {}
 export interface StagingBldBtn extends BuildingStackableBtn {}
 export interface BuildingsModern extends tab {
   constructor(this: this): void;
-  new();
+  new ();
 }

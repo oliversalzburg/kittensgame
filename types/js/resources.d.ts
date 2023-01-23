@@ -2,7 +2,66 @@ import { TabManager } from "../core";
 import { GamePage } from "../game";
 
 export type Resource = {
-  name: string;
+  name:
+    | "alicorn"
+    | "alloy"
+    | "antimatter"
+    | "beam"
+    | "blackcoin"
+    | "bloodstone"
+    | "blueprint"
+    | "burnedParagon"
+    | "catnip"
+    | "coal"
+    | "compedium"
+    | "concrate"
+    | "culture"
+    | "elderBox"
+    | "eludium"
+    | "faith"
+    | "furs"
+    | "gear"
+    | "gflops"
+    | "gold"
+    | "hashrates"
+    | "iron"
+    | "ivory"
+    | "karma"
+    | "kerosene"
+    | "kittens"
+    | "manpower"
+    | "manuscript"
+    | "megalith"
+    | "minerals"
+    | "necrocorn"
+    | "oil"
+    | "paragon"
+    | "parchment"
+    | "plate"
+    | "relic"
+    | "scaffold"
+    | "science"
+    | "ship"
+    | "slab"
+    | "slab"
+    | "sorrow"
+    | "spice"
+    | "starchart"
+    | "steel"
+    | "tanker"
+    | "tears"
+    | "temporalFlux"
+    | "thorium"
+    | "timeCrystal"
+    | "titanium"
+    | "tMythril"
+    | "unicorns"
+    | "unobtainium"
+    | "uranium"
+    | "void"
+    | "wood"
+    | "wrappingPaper"
+    | "zebras";
   title: string;
   type: "common" | "exotic" | "rare" | "uncommon";
   visible?: boolean;
@@ -43,6 +102,7 @@ export interface ResourceManager extends TabManager {
   constructor(this: this): void;
   new ();
 
+  get(this: this, name: Resource["name"]): Resource;
   get(this: this, name: string): Resource | false;
   getPseudoResources(this: this): unknown;
   createResource(this: this, name: string): unknown;
